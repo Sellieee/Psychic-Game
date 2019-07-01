@@ -1,4 +1,4 @@
-// Array to list out all 16 options
+// Array to list out all 26 options
 var computerChoice = [
   "a",
   "b",
@@ -32,14 +32,21 @@ var computerChoice = [
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
+var lettersGuessed = [];
 
+// Need to define userGuess?
 document.onkeypress = function(event) {
   var userGuess = event.key;
 };
 
+// Pushing guessed letters to View Guesses
+lettersGuessed.push(userGuess);
+
+// Randomising computer guesses
 var computerGuess =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
+// When the user has guessed:
 if (userGuess === computerGuess) {
   wins++;
 } else {
@@ -49,10 +56,12 @@ if (userGuess === computerGuess) {
 
 // Text variables
 var winText = document.getElementById("win-text");
+var lossesText = document.getElementById("losses-text");
 var guessesRem = document.getElementById("guesses-left");
 var viewGuesses = document.getElementById("view-guesses");
 
-// Text
+// Text display
 winText.textContent = "Wins: " + wins;
+lossesText.textContent = "Losses: " + losses;
 guessesLeft.textContent = "Guesses Left: " + guessesRem;
 viewGuesses.textContent = "Your Guesses so far: " + userGuess;
