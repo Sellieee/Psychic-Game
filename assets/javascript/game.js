@@ -37,22 +37,24 @@ var lettersGuessed = [];
 // Need to define userGuess?
 document.onkeypress = function(event) {
   var userGuess = event.key;
+  // Pushing guessed letters to View Guesses
+  lettersGuessed.push(userGuess);
+  // When the user has guessed:
+  {
+    if (userGuess === computerGuess) {
+      wins++;
+    } else {
+      guessesLeft--;
+    }
+    if (guessesLeft === 0) {
+      losses++;
+    }
+  }
 };
-
-// Pushing guessed letters to View Guesses
-lettersGuessed.push(userGuess);
 
 // Randomising computer guesses
 var computerGuess =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
-
-// When the user has guessed:
-if (userGuess === computerGuess) {
-  wins++;
-} else {
-  losses++;
-  guessesLeft--;
-}
 
 // Text variables
 var winText = document.getElementById("win-text");
@@ -64,4 +66,4 @@ var viewGuesses = document.getElementById("view-guesses");
 winText.textContent = "Wins: " + wins;
 lossesText.textContent = "Losses: " + losses;
 guessesLeft.textContent = "Guesses Left: " + guessesRem;
-viewGuesses.textContent = "Your Guesses so far: " + userGuess;
+viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
