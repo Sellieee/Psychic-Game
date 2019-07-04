@@ -45,27 +45,34 @@ var guessesRem = document.getElementById("guesses-left");
 var viewGuesses = document.getElementById("view-guesses");
 
 // Text display
+viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
 winText.textContent = "Wins: " + wins;
 lossesText.textContent = "Losses: " + losses;
 guessesRem.textContent = "Guesses Left: " + guessesLeft;
-viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
 
+// Logging user input
 document.onkeypress = function(event) {
-  var userGuess = event.key;
+  var userGuess = event.key.toLowerCase();
   // Pushing guessed letters to View Guesses
   lettersGuessed.push(userGuess);
-  console.log(userGuess);
+  viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
+  winText.textContent = "Wins: " + wins;
+  lossesText.textContent = "Losses: " + losses;
+  guessesRem.textContent = "Guesses Left: " + guessesLeft;
+
+  console.log(lettersGuessed, userGuess);
   // When the user has guessed:
   {
     if (userGuess === computerGuess) {
       wins++;
       alert("Congratulations! You are a true psychic!");
     } else {
-      guessesLeft - 1;
+      guessesLeft--;
       alert("Hmm... Not quite what I had in mind...");
     }
     if (guessesLeft === 0) {
       losses++;
+      guessesLeft = 9;
       alert("Better luck next time!");
     }
   }
@@ -79,4 +86,6 @@ var body = document.getElementById("button")[0];
 document.body.appendChild(button);
 button.addEventListener("click", function() {
   alert("Memory wiped, start again!");
+  wins = 0;
+  losses = 0;
 });
