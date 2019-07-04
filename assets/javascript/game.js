@@ -34,24 +34,6 @@ var losses = 0;
 var guessesLeft = 9;
 var lettersGuessed = [];
 
-// Need to define userGuess?
-document.onkeypress = function(event) {
-  var userGuess = event.key;
-  // Pushing guessed letters to View Guesses
-  lettersGuessed.push(userGuess);
-  // When the user has guessed:
-  {
-    if (userGuess === computerGuess) {
-      wins++;
-    } else {
-      guessesLeft--;
-    }
-    if (guessesLeft === 0) {
-      losses++;
-    }
-  }
-};
-
 // Randomising computer guesses
 var computerGuess =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
@@ -65,5 +47,36 @@ var viewGuesses = document.getElementById("view-guesses");
 // Text display
 winText.textContent = "Wins: " + wins;
 lossesText.textContent = "Losses: " + losses;
-guessesLeft.textContent = "Guesses Left: " + guessesRem;
+guessesRem.textContent = "Guesses Left: " + guessesLeft;
 viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
+
+document.onkeypress = function(event) {
+  var userGuess = event.key;
+  // Pushing guessed letters to View Guesses
+  lettersGuessed.push(userGuess);
+  console.log(userGuess);
+  // When the user has guessed:
+  {
+    if (userGuess === computerGuess) {
+      wins++;
+      alert("Congratulations! You are a true psychic!");
+    } else {
+      guessesLeft - 1;
+      alert("Hmm... Not quite what I had in mind...");
+    }
+    if (guessesLeft === 0) {
+      losses++;
+      alert("Better luck next time!");
+    }
+  }
+};
+
+// Creating reset button in case user wants to restart the game
+var button = document.createElement("button");
+// Button's Text
+button.innerHTML = "Reset";
+var body = document.getElementById("button")[0];
+document.body.appendChild(button);
+button.addEventListener("click", function() {
+  alert("Memory wiped, start again!");
+});
