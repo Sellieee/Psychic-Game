@@ -28,15 +28,15 @@ var computerChoice = [
   "z"
 ];
 
+// Randomising computer guesses
+var computerGuess =
+  computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
 // Counting wins/losses/guesses left
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var lettersGuessed = [];
-
-// Randomising computer guesses
-var computerGuess =
-  computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
 // Text variables
 var winText = document.getElementById("win-text");
@@ -65,15 +65,19 @@ document.onkeypress = function(event) {
   {
     if (userGuess === computerGuess) {
       wins++;
+      // console.log(wins) seems to work okay in console.log but not on the html screen.
       alert("Congratulations! You are a true psychic!");
-    } else {
+    }
+    if (userGuess !== computerGuess) {
       guessesLeft--;
       alert("Hmm... Not quite what I had in mind...");
+      // console.log(guessesLeft); - guesses left seems to work in console,
+      //  but for some reason the guesses left after initial guess is still 9
     }
     if (guessesLeft === 0) {
+      alert("Better luck next time!");
       losses++;
       guessesLeft = 9;
-      alert("Better luck next time!");
     }
   }
 };
@@ -81,11 +85,12 @@ document.onkeypress = function(event) {
 // Creating reset button in case user wants to restart the game
 var button = document.createElement("button");
 // Button's Text
-button.innerHTML = "Reset";
+button.innerHTML = "Start Over";
 var body = document.getElementById("button")[0];
 document.body.appendChild(button);
 button.addEventListener("click", function() {
   alert("Memory wiped, start again!");
   wins = 0;
   losses = 0;
+  guessesLeft = 9;
 });
