@@ -66,8 +66,8 @@ document.onkeypress = function(event) {
   winText.textContent = "Wins: " + wins;
   lossesText.textContent = "Losses: " + losses;
   guessesRem.textContent = "Guesses Left: " + guessesLeft;
+  console.log(userGuess);
 
-  console.log(lettersGuessed, userGuess);
   // When the user has guessed:
   {
     if (userGuess === computerGuess) {
@@ -98,6 +98,8 @@ var body = document.getElementById("button")[0];
 document.body.appendChild(button);
 button.addEventListener("click", function() {
   alert("Memory wiped, start again!");
+  reset();
+  window.location.reload();
   wins = 0;
   losses = 0;
   guessesLeft = 9;
