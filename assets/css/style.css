@@ -25,6 +25,10 @@ p {
   font-size: 20px;
 }
 
+#user-choice {
+  font-weight: bold;
+}
+
 footer {
   color: azure;
   font-family: "Courier New", Courier, monospace;

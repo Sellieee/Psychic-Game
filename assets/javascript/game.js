@@ -78,8 +78,6 @@ document.onkeypress = function(event) {
     if (userGuess !== computerGuess) {
       guessesLeft--;
       alert("Hmm... Not quite what I had in mind...");
-      // console.log(guessesLeft); - guesses left seems to work in console,
-      //  but for some reason the guesses left after initial guess is still 9
     }
     if (guessesLeft === 0) {
       alert("Better luck next time!");
@@ -104,3 +102,6 @@ button.addEventListener("click", function() {
   losses = 0;
   guessesLeft = 9;
 });
+
+// Main issue - wins, losses and guessesLeft are delayed. So if
+// player wins, the win is given in the next round.
