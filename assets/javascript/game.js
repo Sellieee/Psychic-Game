@@ -28,6 +28,12 @@ var computerChoice = [
   "z"
 ];
 
+// Create reset function
+function reset() {
+  guessesLeft = 9;
+  lettersGuessed = [];
+}
+
 // Randomising computer guesses
 var computerGuess =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
@@ -53,6 +59,7 @@ guessesRem.textContent = "Guesses Left: " + guessesLeft;
 // Logging user input
 document.onkeypress = function(event) {
   var userGuess = event.key.toLowerCase();
+
   // Pushing guessed letters to View Guesses
   lettersGuessed.push(userGuess);
   viewGuesses.textContent = "Your Guesses so far: " + lettersGuessed;
@@ -65,8 +72,8 @@ document.onkeypress = function(event) {
   {
     if (userGuess === computerGuess) {
       wins++;
-      // console.log(wins) seems to work okay in console.log but not on the html screen.
       alert("Congratulations! You are a true psychic!");
+      reset();
     }
     if (userGuess !== computerGuess) {
       guessesLeft--;
@@ -78,6 +85,7 @@ document.onkeypress = function(event) {
       alert("Better luck next time!");
       losses++;
       guessesLeft = 9;
+      reset();
     }
   }
 };
