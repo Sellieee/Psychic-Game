@@ -31,6 +31,8 @@ var computerChoice = [
 // Create reset function
 function reset() {
   guessesLeft = 9;
+  wins = 0;
+  losses = 0;
   lettersGuessed = [];
 }
 
@@ -74,15 +76,14 @@ document.onkeypress = function(event) {
       wins++;
       alert("Congratulations! You are a true psychic!");
       reset();
-    }
-    if (userGuess !== computerGuess) {
+    } else if (userGuess !== computerGuess) {
       guessesLeft--;
       alert("Hmm... Not quite what I had in mind...");
     }
     if (guessesLeft === 0) {
-      alert("Better luck next time!");
       losses++;
       guessesLeft = 9;
+      alert("Better luck next time!");
       reset();
     }
   }

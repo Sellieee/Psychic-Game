@@ -6,6 +6,9 @@ body {
 h1 {
   color: azure;
   text-align: center;
+  font-family: 'Bahianita', cursive;
+  font-size: 80px;
+  font-weight: bold;
 }
 
 #game-text {
@@ -23,6 +26,7 @@ button {
 p {
   padding-bottom: 30px;
   font-size: 20px;
+  font-family: 'Barriecito', cursive;
 }
 
 #user-choice {
