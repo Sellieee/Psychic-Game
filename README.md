@@ -1,2 +1,2 @@
 # Psychic-Game
-Week 3 Homework
+http://sellieee.github.io/Psychic-Game | https://github.com/Sellieee/Psychic-Game/
